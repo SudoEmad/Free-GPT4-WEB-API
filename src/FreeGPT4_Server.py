@@ -17,8 +17,6 @@ import getpass
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 
-
-
 app = Flask(__name__)
 
 UPLOAD_FOLDER = 'data/'
@@ -52,12 +50,10 @@ PROVIDERS = {
     "Wewordle": g4f.Provider.Wewordle,
     "You": g4f.Provider.You,
     "Yqcloud": g4f.Provider.Yqcloud,
-    "Bard": g4f.Provider.Bard,
-    "DuckDuckGo": g4f.Provider.DuckDuckGo
+    # "DuckDuckGo": g4f.Provider.DuckDuckGo  # Removed as it is no longer supported
 }
 
 GENERIC_MODELS = ["gpt-3.5-turbo", "gpt-4", "gpt-4o"]
-
 
 print(
     """
@@ -529,4 +525,4 @@ async def get_token():
 
 if __name__ == "__main__":
     # Starts the server, change the port if needed
-    app.run("0.0.0.0", port=args.port, debug=False)
+    app.run("0.0.0.0", port=args.port, debug=False)  
