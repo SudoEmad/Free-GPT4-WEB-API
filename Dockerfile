@@ -6,6 +6,7 @@ COPY --chown=www-data:www-data . .
 RUN apt update && apt install gcc chromium libsqlite3-dev -y
 RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
+RUN pip3 install curl_cffi
 
 WORKDIR /app/src
 
