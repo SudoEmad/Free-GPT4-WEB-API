@@ -14,7 +14,12 @@ WORKDIR /app/src
 ENV PORT=5500
 EXPOSE "$PORT/tcp"
 
-#shell form necessary
-SHELL ["python3","FreeGPT4_Server.py"]
-ENTRYPOINT ["python3","FreeGPT4_Server.py"]
-#CMD ["--cookie-file","/cookies.json"]
+# Load environment variables
+COPY .env .env
+
+# Set up shell form necessary
+SHELL ["python3", "-m", "FreeGPT4_Server"]
+
+# Run the server with arguments
+ENTRYPOINT ["python3", "-m", "FreeGPT4_Server"]
+CMD ["--enable-gui", "--password", "$PASSWORD"]
